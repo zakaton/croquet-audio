@@ -1,0 +1,83 @@
+<html>
+    <head>
+        <title>Croquet Spatial Multi-Track</title>
+        <link rel="shortcut icon" href="icon.png" type="image/x-icon" />
+        
+        <!-- https://croquet.studio/sdk/docs/index.html -->
+        <script src="croquet.js"></script>
+        <script src="model.js"></script>
+        <script src="view.js"></script>
+
+        <!-- https://github.com/bbc/peaks.js#demos -->
+        <script src="node_modules/peaks.js/peaks.js"></script>
+
+        <!-- https://github.com/feross/simple-peer -->
+        <script src="node_modules/simple-peer/simplepeer.min.js"></script>
+
+        <!-- https://github.com/davidshimjs/qrcodejs -->
+        <script src="qrcode.min.js"></script>
+
+        <!-- https://resonance-audio.github.io/resonance-audio/ -->
+        <script src="https://cdn.jsdelivr.net/npm/resonance-audio/build/resonance-audio.min.js"></script>
+
+        <!-- https://github.com/zakaton/Bose-Frames-Web-SDK -->
+        <script src="bose-ar-web-sdk.min.js"></script>
+
+        <!-- https://github.com/zakaton/Leap-Motion-Web-SDK -->
+        <script src="leap-motion.js"></script>
+    </head>
+
+    <style>
+        #qrcode {
+            position: fixed;
+            right: 0;
+            top: 0;
+            padding: 10px;
+        }
+
+        #sceneContainer {
+            height: 50%;
+            width: 100%;
+        }
+
+        #tracks {
+            height : 60%;
+            width: 100%;
+        }
+        #tracks > .track {
+            height : 200px;
+        }
+    </style>
+
+    <body>
+        <h1>Croquet Spatial Multi-Track Recorder</h1>
+
+        <div id="qrcode"></div>
+        <script>
+            const qrcode = new QRCode(document.getElementById("qrcode"), {
+                text: "https://10.0.0.104:5500/microphone.html",
+                width: 100,
+                height: 100,
+            });
+        </script>
+
+        <bose-ar-device game-rotation=20 double-tap head-shake head-nod id="boseARDeviceElement"></bose-ar-device>
+        <button id="record">Record</button>
+        <button id="stopRecording" disabled>Stop Recording</button>
+
+        <div id="sceneContainer"></div>
+        <button id="playRecording" disabled>Play</button>
+        <div id="tracks">
+            
+        </div>
+
+
+        <leap-motion open></leap-motion>
+    </body>
+
+    <script src="scene.js"></script>
+
+    <script>
+        Croquet.startSession(`croquet-multi-track-recorder`, Model, HostView);
+    </script>
+</html>
