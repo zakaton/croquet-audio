@@ -55,7 +55,7 @@
         <div id="qrcode"></div>
         <script>
             const qrcode = new QRCode(document.getElementById("qrcode"), {
-                text: "https://10.0.0.104:5500/microphone.html",
+                text: `${location.href.replace('index.html', '')}microphone.html`,
                 width: 100,
                 height: 100,
             });
