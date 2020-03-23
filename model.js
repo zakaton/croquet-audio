@@ -1,8 +1,8 @@
 class Model extends Croquet.Model {
     init() {
-        this.x = {hey : "world"};
-        this.subscribe(this.sessionId, "signal", this.signal);
-        this.subscribe(this.sessionId, "deviceorientation", this.deviceorientation);
+        this.x = {hey : "worldd"};
+        this.subscribe(this.sessionId, "set-signal", this.signal);
+        this.subscribe(this.sessionId, "set-deviceorientation", this.deviceorientation);
         this.subscribe(this.sessionId, "set-gain", this.setGain);
     }
 

@@ -165,7 +165,7 @@ class HostView extends Croquet.View {
 
             peer.on("signal", data => {
                 console.log("sending answer");
-                this.publish(this.sessionId, "signal", {
+                this.publish(this.sessionId, "set-signal", {
                     data,
                     viewId,
                     timestamp : Date.now(),
@@ -319,7 +319,7 @@ class MicrophoneView extends Croquet.View {
 
             this.peer.on("signal", data => {
                 console.log("sending offer");
-                this.publish(this.sessionId, "signal", {
+                this.publish(this.sessionId, "set-signal", {
                     viewId : this.viewId,
                     data,
                     timestamp : Date.now(),
@@ -357,8 +357,8 @@ class MicrophoneView extends Croquet.View {
         if(this.connected) {
             const {alpha, beta, gamma} = this.deviceorientation;
             
-            if(Math.random() < 0.2)
-                this.publish(this.sessionId, "deviceorientation", {
+            if(Math.random() < 0.3)
+                this.publish(this.sessionId, "set-deviceorientation", {
                     viewId : this.viewId,
                     alpha, beta, gamma,
                 });
