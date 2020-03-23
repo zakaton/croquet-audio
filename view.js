@@ -25,7 +25,7 @@ class HostView extends Croquet.View {
         this.subscribe(this.sessionId, "signal", this.signal);
         this.subscribe(this.sessionId, "view-exit", this.viewExit);
         this.subscribe(this.sessionId, "deviceorientation", this.deviceorientation);
-        this.subscribe(this.sessionId, "set-gain", this.setGain);
+        this.subscribe(this.sessionId, "gain", this.setGain);
 
         this.focused = false;
 

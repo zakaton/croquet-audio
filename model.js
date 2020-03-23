@@ -15,7 +15,7 @@ class Model extends Croquet.Model {
     }
 
     setGain({viewId, gain}) {
-        this.publish(this.sessionId, "set-gain", {viewId, gain});
+        this.publish(this.sessionId, "gain", {viewId, gain});
     }
 }
 
